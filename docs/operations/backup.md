@@ -1,6 +1,6 @@
 ---
 title: Backup and restore
-sidebar_label: Backup and restore
+# sidebar_label: Backup and restore
 description:
   Details and resources which describe how to perform database backup and
   restore operations for a QuestDB instance using point-in-time backups and
@@ -35,7 +35,6 @@ types of supported filesystems and what data is included in backups:
   but users may copy a backup to such a filesystem after a backup has been made.
 
 :::
-
 ## Creating a point-in-time backup
 
 When creating a point-in-time (PIT) backup in QuestDB, you can specify that the
@@ -138,7 +137,10 @@ API:
 ```bash
 # this will add crontab record that will run trigger at backup every-day at 01:00 AM
 # copy paste this into server terminal
-crontab -l | { cat; echo "0 1 * * * /usr/bin/curl --silent -G --data-urlencode 'query=BACKUP database;' http://localhost:9000/exec &>/dev/null"; } | crontab -
+crontab -l | { cat; echo "0 1 * * * /usr/bin/curl --silent -G 
+--data-urlencode 'query=BACKUP database;' 
+http://localhost:9000/exec &>/dev/null"; } | 
+crontab -
 ```
 
 This example shows how to compress a backup using the `tar` utility. An archive
@@ -153,4 +155,4 @@ The backup file can be expanded using the same utility:
 
 ```bash
 tar -xf questdb_backup.tar.gz
-```
+``` 
